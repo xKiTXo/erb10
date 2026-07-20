@@ -7,7 +7,7 @@ class Listing(models.Model):
     title=models.CharField(max_length=200)
     address=models.CharField(max_length=200)
     district=models.CharField(max_length=50)
-    curisine_choices=models.CharField(max_length=50)
+    cuisine_choices=models.CharField(max_length=50)
     description=models.TextField(blank=True)
     specialty=models.IntegerField()
     room_type=models.CharField(max_length=50)
@@ -34,7 +34,7 @@ class Listing(models.Model):
         ordering =['-list_date']
         indexes=[models.Index(fields=['list_date'])]
 
-    def __self__(self):
+    def __str__(self):
         return self.title
 
 

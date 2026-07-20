@@ -10,5 +10,5 @@ class Chef(models.Model):
     is_mvp=models.BooleanField(default=False)
     hire_date=models.DateTimeField(auto_now_add=True)
 
-    def __self__(self):
+    def __str__(self):
         return self.name 
