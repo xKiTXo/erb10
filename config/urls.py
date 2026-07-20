@@ -16,10 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("",include("pages.urls",namespace='pages')),
-    path("listings/",include("listings.urls",namespace='listings')),
-    path("chefs/",include("chefs.urls",namespace='chefs')),
+    # path("listings/",include("listings.urls",namespace='listings')),
+    # path("chefs/",include("chefs.urls",namespace='chefs')),
     path('admin/', admin.site.urls),
-]
+
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+admin.site.site_header="Food Agent Admin"
+admin.site.site_title="Food Agent Admin Rortal"
+admin.site.index_title="Welcome to Food Agent Admin Portal"
