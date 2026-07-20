@@ -1,10 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from listings.models import Listing
 
 # Create your views here
 def index(request):
-    # return HttpResponse("<h1>hello world</h1>")
-    return render(request,"pages/index.html")
+    listings = Listing.objects.order_by("-list_date")
+    context={"listings":listings}
+    print(listings[0].photo_main)
+    print(listings[0].photo_main.url)
+    return render(request,"pages/index.html",context)
 
 def about(request):
     return render(request,"pages/about.html")

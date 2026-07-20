@@ -1,6 +1,9 @@
 {%extends "admin/base.html"%}
 {%load static%}
+{% block extrahead%}
+<link rel="stylesheet" type="text/css" href={% static "css/admin.css"%} />
+{%endblock%}
 {%block branding%}
-<link rel="stylesheet" href={% static "css/admin.css"%} />
+
 <span class="brands">Food Agent Admin 1</span>
 {% endblock %}
