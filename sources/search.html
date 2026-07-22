@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+     <!-- Font Awesome -->
+    <link rel="stylesheet" href="assets/css/all.css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <!-- Custom -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <title>Food Agent - Search</title>
+  </head>
+  <body>
+
+    <!-- Top Bar -->
+    <section id="top-bar" class="p-3 bg-light border-bottom">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-4">
+            <i class="fas fa-phone"></i> (852)-555-5555
+          </div>
+          <div class="col-md-4">
+            <i class="fas fa-envelope-open"></i> contact@foodagent.co
+          </div>
+          <div class="col-md-4 text-right">
+            <div class="social d-inline-block">
+              <a href="#" class="text-dark mr-2"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-dark mr-2"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="text-dark mr-2"><i class="fab fa-linkedin"></i></a>
+              <a href="#" class="text-dark mr-2"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-dark"><i class="fab fa-pinterest"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="fas fa-utensils"></i> Food Agent
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul class="navbar-nav">
+            <li class="nav-item active mr-3">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item mr-3">
+              <a class="nav-link" href="listings.html">Restaurants</a>
+            </li>
+            <li class="nav-item mr-3">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item mr-3">
+              <a class="nav-link" href="register.html"><i class="fas fa-user-plus"></i> Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Showcase -->
+    <section id="showcase">
+      <div class="container text-center">
+        <div class="home-search p-5">
+          <div class="overlay p-5">
+            <h1 class="display-4 mb-4">Find the perfect place to eat</h1>
+            <p class="lead">Search by district, cuisine, price, and current availability.</p>
+            <div class="search">
+              <form action="search.html">
+                <div class="form-row">
+                  <div class="col-md-4 mb-3">
+                    <label class="sr-only">Keywords</label>
+                    <input type="text" name="keywords" class="form-control" placeholder="Cuisine, dish, or restaurant" />
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label class="sr-only">District</label>
+                    <select name="district" class="form-control">
+                      <option selected="true" disabled="disabled">District (All)</option>
+                      <option value="IL">Islands</option>
+                      <option value="KT">Kwai Tsing</option>
+                      <option value="NR">North</option>
+                      <option value="SK">Sai Kung</option>
+                      <option value="ST">Sha Tin</option>
+                      <option value="TP">Tai Po</option>
+                      <option value="TW">Tsuen Wan</option>
+                      <option value="TM">Tuen Mun</option>
+                      <option value="YL">Yuen Long</option>
+                      <option value="KC">Kowloon City</option>
+                      <option value="KW">Kwun Tong</option>
+                      <option value="SS">Sham Shui Po</option>
+                      <option value="WT">Wong Tai Sin</option>
+                      <option value="YM">Yau Tsim Mong</option>
+                      <option value="CW">Central & Western</option>
+                      <option value="ER">Eastern</option>
+                      <option value="SR">Southern</option>
+                      <option value="WC">Wan Chai</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label class="sr-only">Category</label>
+                    <select name="category" class="form-control">
+                      <option selected="true" disabled="disabled">Category (All)</option>
+                      <option value="japanese">Japanese</option>
+                      <option value="italian">Italian</option>
+                      <option value="streetfood">Street Food</option>
+                      <option value="seafood">Seafood</option>
+                      <option value="dessert">Dessert</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label class="sr-only">Price</label>
+                    <select name="price" class="form-control">
+                      <option selected="true" disabled="disabled">Price Range</option>
+                      <option value="budget">Budget</option>
+                      <option value="mid">Mid Range</option>
+                      <option value="premium">Premium</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="sr-only">Open Now</label>
+                    <select name="open" class="form-control">
+                      <option selected="true" disabled="disabled">Open Now</option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                    </select>
+                  </div>
+                </div>
+                <button class="btn btn-danger btn-block mt-4" type="submit">Search Restaurants</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="listings" class="py-5">
+      <div class="container">
+        <h3 class="text-center mb-4">Search Results</h3>
+        <div class="row">
+           <!-- Listing 1 -->
+        <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card listing-preview">
+            <img src="assets/img/homes/home-1.jpg" class="card-img-top" alt="restaurant" />
+            <div class="card-img-overlay">
+            <h2>
+                <span class="badge badge-danger text-white"
+                >$Late Night Discount</span>
+            </h2>
+            </div>
+            <div class="card-body">
+                <div class="listing-heading text-center">
+            <h4 class="text-danger">Sushi House</h4>
+            <span class="badge badge-cuisine">Japanese</span>
+            <p class="text-muted"><i class="fas fa-map-marker-alt"></i> Central District</p>
+            </div>
+            <hr />
+            <div class="row py-2 text-secondary">
+                <div class="col-6"><i class="fas fa-utensils"></i> Japanese</div>
+                <div class="col-6"><i class="fas fa-dollar-sign"></i>500/person</div>
+            </div>
+            <div class="row py-2 text-secondary">
+                <div class="col-6"><i class="fas fa-calendar-alt"></i> Reservations</div>
+                <div class="col-6"><i class="fas fa-star"></i> Cozy Ambiance</div>
+            </div> 
+            <div class="row py-2 text-secondary">
+                <div class="col-6"><i class="fas fa-wifi"></i> Free Wi-Fi</div>
+                <div class="col-6"><i class="fas fa-motorcycle"></i> Delivery</div>
+            </div>
+            <div class="row py-2 text-secondary">
+                <div class="col-6"><i class="fas fa-star"></i> 4.8</div>
+                <div class="col-6"><i class="fas fa-clock"></i> Open Now</div>
+            </div>
+            <a href="listing.html" class="btn btn-danger btn-block mt-3">View Details</a>
+            </div>
+        </div>
+        </div>
+        <!-- Listing 2 -->
+        <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card listing-preview">
+                <img src="assets/img/homes/home-2.jpg" class="card-img-top" alt="restaurant" />
+                <div class="card-img-overlay">
+                    <h2>
+                    <span class="badge badge-danger text-white"
+                        >$Late Night Discount</span>
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="listing-heading text-center">
+                    <h4 class="text-danger">Bella Pasta</h4>
+                    <span class="badge badge-cuisine">Italian</span>
+                    <p class="text-muted"><i class="fas fa-map-marker-alt"></i> Central District</p>
+                    </div>
+                    <hr />
+                    <div class="row py-2 text-secondary">
+                    <div class="col-6"><i class="fas fa-utensils"></i> Italian</div>
+                    <div class="col-6"><i class="fas fa-dollar-sign"></i>1000/person</div>
+                    </div>
+                    <div class="row py-2 text-secondary">
+                    <div class="col-6"><i class="fas fa-calendar-alt"></i> Reservations</div>
+                    <div class="col-6"><i class="fas fa-star"></i> Relaxing</div>
+                    </div> 
+                    <div class="row py-2 text-secondary">
+                        <div class="col-6"><i class="fas fa-wifi"></i> Free Wi-Fi</div>
+                        <div class="col-6"><i class="fas fa-motorcycle"></i> Delivery</div>
+                    </div>
+                    <div class="row py-2 text-secondary">
+                    <div class="col-6"><i class="fas fa-star"></i> 4.8</div>
+                    <div class="col-6"><i class="fas fa-clock"></i> Open Now</div>
+                    </div>
+                    <a href="listing.html" class="btn btn-danger btn-block mt-3">View Details</a>
+                </div>
+            </div>
+        </div>
+        <!-- Listing 3 -->
+        <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card listing-preview">
+                <img src="assets/img/homes/home-3.jpg" class="card-img-top" alt="restaurant" />
+                <div class="card-img-overlay">
+                    <h2>
+                    <span class="badge badge-danger text-white"
+                        >$90% Off</span>
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="listing-heading text-center">
+                    <h4 class="text-danger">Night Owl</h4>
+                    <span class="badge badge-cuisine">Street Food</span>
+                    <p class="text-muted"><i class="fas fa-map-marker-alt"></i> Tsim Sha Tsui</p>
+                    </div>
+                    <hr />
+                    <div class="row py-2 text-secondary">
+                    <div class="col-6"><i class="fas fa-utensils"></i> Southern</div>
+                    <div class="col-6"><i class="fas fa-dollar-sign"></i>200/person</div>
+                    </div>
+                    <div class="row py-2 text-secondary">
+                    <div class="col-6"><i class="fas fa-calendar-alt"></i> Reservations</div>
+                    <div class="col-6"><i class="fas fa-star"></i> Relaxing</div>
+                    </div> 
+                    <div class="row py-2 text-secondary">
+                        <div class="col-6"><i class="fas fa-wifi"></i> Free Wi-Fi</div>
+                        <div class="col-6"><i class="fas fa-motorcycle"></i> Delivery</div>
+                    </div>
+                    <div class="row py-2 text-secondary">
+                    <div class="col-6"><i class="fas fa-star"></i> 4.5</div>
+                    <div class="col-6"><i class="fas fa-clock"></i> Open Now</div>
+                    </div>
+                    <a href="listing.html" class="btn btn-danger btn-block mt-3">View Details</a>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+   <!-- Footer -->
+    <footer id="main-footer" class="bg-dark text-white text-center py-4">
+     Food Agent. Copyright &copy; 
+      <span class="year"></span> Discover your next favorite meal.
+    </footer>
+
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js "></script>
+  </body>
+</html>
