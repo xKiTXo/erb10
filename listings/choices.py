@@ -1,0 +1,41 @@
+district_choices={
+    "Islands":"Islands",
+    "Kwai Tsing":"Kwai Tsing",
+    "North": "North",
+    "Sai Kung":  "Sai Kung",
+    "Sha Tin":   "Sha Tin",
+    "Tai Po":   "Tai Po",
+    "Tsuen Wan":  "Tsuen Wan",
+    "Tuen Mun":  "Tuen Mun",
+    "Yuen Long":  "Yuen Long",
+    "Kowloon City": "Kowloon City",
+    "Kwun Tong":  "Kwun Tong",
+    "Sham Shui Po":  "Sham Shui Po",
+    "Wong Tai Sin":  "Wong Tai Sin",
+    "Yau Tsim Mong":  "Yau Tsim Mong",
+    "Central & Western":  "Central & Western",
+    "Eastern":  "Eastern",
+    "Southern":  "Southern",
+    "Wan Chai":  "Wan Chai",
+}
+
+category_choices={
+    "Japanese":"Japanese",
+    "Chinese":"Chinese",
+    "Thai":"Thai",
+    "Italian":"Italian",
+    "Mexican":"Mexican",
+    "Korean":"Korean",
+    "Vietnamese":"Vietnamese",
+}
+
+price_range_choices={
+    "budget":"Budget",
+    "mid":"Mid Range",
+    "premium":"Premium",
+}
+
+open_now_choices={
+    "yes":"Yes",
+    "no":"No",
+}

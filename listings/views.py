@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from .models import Listing
+from .models import Chef
 from django.utils import timezone
 from django.core.paginator import Paginator
 
@@ -19,9 +20,10 @@ def listings(request):
 
 def listing(request,listing_id):
     listing = get_object_or_404(Listing,pk=listing_id)
-    print(listing)
+    current_time = timezone.localtime().time()
     context = {
-        "listing":listing
+        "listing":listing,
+        "current_time":current_time,
     }
     return render(request,"pages/listing.html",context)
 

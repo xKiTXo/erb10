@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from listings.models import Listing
 from django.utils import timezone
-
+from listings.choices import category_choices, district_choices,price_range_choices,open_now_choices
 
 # Create your views here
 def index(request):
@@ -16,7 +16,11 @@ def index(request):
     context={
         "listings":listings,
         "current_time":current_time,
-        "top3_rated":top3_rated
+        "top3_rated":top3_rated,
+        "category_choices":category_choices,
+        "district_choices":district_choices,
+        "price_range_choices":price_range_choices,
+        "open_now_choices":open_now_choices
     }
     
     return render(request,"pages/index.html",context)
