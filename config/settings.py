@@ -52,6 +52,7 @@ LOCAL_APPS=[
     "pages.apps.PagesConfig",
     "chefs.apps.ChefsConfig",
     "listings.apps.ListingsConfig",
+    "accounts.apps.AccountsConfig",
 ]
 
 THIRD_PARTY_APPS=[

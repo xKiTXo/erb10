@@ -22,12 +22,10 @@
         </ul>
         <ul class="navbar-nav ml-auto">
         <li class="nav-item mr-3">
-            {% comment %} register {% endcomment %}
-            <a class="nav-link" href="register.html"><i class="fas fa-user-plus"></i> Register</a>
+            <a class="nav-link" href={%url "accounts:register"%}><i class="fas fa-user-plus"></i> Register</a>
         </li>
         <li class="nav-item">
-            {% comment %} login {% endcomment %}
-            <a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+            <a class="nav-link" href={%url "accounts:login"%}><i class="fas fa-sign-in-alt"></i> Login</a>
         </li>
         </ul>
     </div>
