@@ -14,13 +14,17 @@
                     <div class="col-md-4 mb-3">
                         <label class="sr-only">Keywords</label>
                         <input type="text" name="keywords" class="form-control" 
-                        value={{values.keywords}}
+                        value="{{values.keywords}}"
                         placeholder="Cuisine, dish, or restaurant" />
                     </div>
                     <div class="col-md-4 mb-3">
                         <label class="sr-only">District</label>
                         <select name="district" class="form-control">
-                            <option selected="true" disabled="disabled">District (All)</option>
+                            <option value=""
+                                {% if not values.district%} selected="true" {%endif%} 
+                            >
+                                District (All)
+                            </option>
                             {% for key,value in district_choices.items%}
                                 <option value="{{key}}"
                                 {% if values.district == key%} selected="true" {%endif%} 
@@ -33,7 +37,9 @@
                     <div class="col-md-4 mb-3">
                         <label class="sr-only">Category</label>
                         <select name="category" class="form-control">
-                            <option selected="true" disabled="disabled">Category (All)</option>
+                            <option value=""
+                            {% if not values.category%} selected="true" {%endif%} 
+                            >Category (All)</option>
                             {% for key,value in category_choices.items%}
                                 <option value="{{key}}"
                                 {% if values.category == key%} selected="true" {%endif%} 
@@ -46,7 +52,9 @@
                     <div class="col-md-6 mb-3">
                         <label class="sr-only">Price</label>
                         <select name="price" class="form-control">
-                            <option selected="true" disabled="disabled">Price Range</option>
+                            <option value=""
+                            {% if not values.price%} selected="true" {%endif%} 
+                            >Price Range</option>
                             {% for key,value in price_range_choices.items%}
                                 <option value="{{key}}"
                                 {% if values.price == key%} selected="true" {%endif%} 
@@ -57,7 +65,9 @@
                     <div class="col-md-6 mb-3">
                         <label class="sr-only">Open Now</label>
                         <select name="open" class="form-control">
-                            <option selected="true" disabled="disabled">Open Now</option>
+                            <option value=""
+                            {% if not values.open%} selected="true" {%endif%} 
+                            >Open Now</option>
                             {% for key,value in open_now_choices.items%}
                                 <option value="{{key}}"
                                 {% if values.open == key%} selected="true" {%endif%} 
@@ -79,7 +89,6 @@
         <h3 class="text-center mb-4">Search Results</h3>
         <div class="row">
             {%for listing in listings%}
-                <!-- Listing 1 -->
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="card listing-preview">
                         <img src={{listing.photo_main.url}} class="card-img-top" alt="restaurant" style="height:250px;"/>
@@ -122,42 +131,42 @@
 
 
         {% if listings.has_other_pages %}
-        <div class="row">
-            <div class="col-md-12">
-            <ul class="pagination">
-                {% if listings.has_previous %}
-                    <li class="page-item">
-                        <a class="page-link" href="{{values}} ?page={{listings.previous_page_number}}">&laquo;</a>
-                    </li>
-                {%else%}
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" disabled>&laquo;</a>
-                    </li>
-                {%endif%}
-                {% for i in listings.paginator.page_range %}
-                    {% if i == listings.number%}
-                        <li class="page-item active">
-                            <a class="page-link">{{i}}</a>
+            <div class="row">
+                <div class="col-md-12">
+                <ul class="pagination">
+                    {% if listings.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{values}} ?page={{listings.previous_page_number}}">&laquo;</a>
                         </li>
-                    {%else %}
-                        <li class="page-item ">
-                            <a class="page-link" href="?page={{i}}">{{i}}</a>
+                    {%else%}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" disabled>&laquo;</a>
                         </li>
                     {%endif%}
-                {% endfor %}
-                {% if listings.has_next %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{listings.next_page_number}}">&raquo;</a>
-                    </li>
-                {% else %}
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#">&raquo;</a>
-                    </li>
-                {%endif %}
-            </ul>
+                    {% for i in listings.paginator.page_range %}
+                        {% if i == listings.number%}
+                            <li class="page-item active">
+                                <a class="page-link">{{i}}</a>
+                            </li>
+                        {%else %}
+                            <li class="page-item ">
+                                <a class="page-link" href="?page={{i}}">{{i}}</a>
+                            </li>
+                        {%endif%}
+                    {% endfor %}
+                    {% if listings.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{listings.next_page_number}}">&raquo;</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">&raquo;</a>
+                        </li>
+                    {%endif %}
+                </ul>
+                </div>
             </div>
-        </div>
-    {% endif %}
+        {% endif %}
     </div>
 </section>
 {%endblock%}
