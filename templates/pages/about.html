@@ -42,7 +42,7 @@
             <div class="col-md-4 mt-4 mt-md-0">
             <div class="card shadow-sm">
                 {% comment %} kyle.jpg {% endcomment %}
-                <img class="card-img-top" src="assets/img/staffs/kyle.jpg" alt="Food curator" />
+                <img class="card-img-top" src="/img/staffs/kyle.jpg" alt="Food curator" />
                 <div class="card-body">
                 <h5 class="card-title mb-2">Featured Curator</h5>
                 <h6 class="text-danger mb-3">Kyle Chan</h6>
@@ -60,8 +60,7 @@
         <h2 class="display-4">We Work For Your Taste</h2>
         <h4>From local gems to trending dining spots, we make restaurant discovery simple and enjoyable.</h4>
         <hr />
-        {% comment %} listings {% endcomment %}
-        <a href="listings.html" class="btn btn-danger text-white btn-lg">View Featured Restaurants</a>
+        <a href={%url "listings:index"%} class="btn btn-danger text-white btn-lg">View Featured Restaurants</a>
     </section>
     <!-- team -->
     <section id="team" class="py-5">

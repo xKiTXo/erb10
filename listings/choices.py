@@ -1,22 +1,22 @@
 district_choices={
     "Islands":"Islands",
-    "Kwai Tsing":"Kwai Tsing",
+    "KT":"Kwai Tsing",
     "North": "North",
-    "Sai Kung":  "Sai Kung",
-    "Sha Tin":   "Sha Tin",
-    "Tai Po":   "Tai Po",
-    "Tsuen Wan":  "Tsuen Wan",
-    "Tuen Mun":  "Tuen Mun",
-    "Yuen Long":  "Yuen Long",
-    "Kowloon City": "Kowloon City",
-    "Kwun Tong":  "Kwun Tong",
-    "Sham Shui Po":  "Sham Shui Po",
-    "Wong Tai Sin":  "Wong Tai Sin",
-    "Yau Tsim Mong":  "Yau Tsim Mong",
-    "Central & Western":  "Central & Western",
+    "SK":  "Sai Kung",
+    "ST":   "Sha Tin",
+    "TP":   "Tai Po",
+    "TW":  "Tsuen Wan",
+    "TM":  "Tuen Mun",
+    "YL":  "Yuen Long",
+    "KC": "Kowloon City",
+    "KT":  "Kwun Tong",
+    "SSP":  "Sham Shui Po",
+    "WTS":  "Wong Tai Sin",
+    "YTM":  "Yau Tsim Mong",
+    "CW":  "Central & Western",
     "Eastern":  "Eastern",
     "Southern":  "Southern",
-    "Wan Chai":  "Wan Chai",
+    "WC":  "Wan Chai",
 }
 
 category_choices={
@@ -30,12 +30,12 @@ category_choices={
 }
 
 price_range_choices={
-    "budget":"Budget",
-    "mid":"Mid Range",
-    "premium":"Premium",
+    "Budget":"Budget",
+    "Mid":"Mid Range",
+    "Premium":"Premium",
 }
 
 open_now_choices={
-    "yes":"Yes",
-    "no":"No",
+    "Yes":"Yes",
+    "No":"No",
 }

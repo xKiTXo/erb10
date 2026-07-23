@@ -1,4 +1,163 @@
 {% extends "base.html" %}
+{% load humanize%}
 {% block content %}
-<h1>search</h1>
+<!-- Showcase -->
+<section id="showcase">
+    <div class="container text-center">
+    <div class="home-search p-5">
+        <div class="overlay p-5">
+        <h1 class="display-4 mb-4">Find the perfect place to eat</h1>
+        <p class="lead">Search by district, cuisine, price, and current availability.</p>
+        <div class="search">
+            <form action="{% url "listings:search" %}">
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label class="sr-only">Keywords</label>
+                        <input type="text" name="keywords" class="form-control" 
+                        value={{values.keywords}}
+                        placeholder="Cuisine, dish, or restaurant" />
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="sr-only">District</label>
+                        <select name="district" class="form-control">
+                            <option selected="true" disabled="disabled">District (All)</option>
+                            {% for key,value in district_choices.items%}
+                                <option value="{{key}}"
+                                {% if values.district == key%} selected="true" {%endif%} 
+                                >
+                                    {{value}}
+                                </option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="sr-only">Category</label>
+                        <select name="category" class="form-control">
+                            <option selected="true" disabled="disabled">Category (All)</option>
+                            {% for key,value in category_choices.items%}
+                                <option value="{{key}}"
+                                {% if values.category == key%} selected="true" {%endif%} 
+                                >{{value}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label class="sr-only">Price</label>
+                        <select name="price" class="form-control">
+                            <option selected="true" disabled="disabled">Price Range</option>
+                            {% for key,value in price_range_choices.items%}
+                                <option value="{{key}}"
+                                {% if values.price == key%} selected="true" {%endif%} 
+                                >{{value}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="sr-only">Open Now</label>
+                        <select name="open" class="form-control">
+                            <option selected="true" disabled="disabled">Open Now</option>
+                            {% for key,value in open_now_choices.items%}
+                                <option value="{{key}}"
+                                {% if values.open == key%} selected="true" {%endif%} 
+                                >{{value}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-danger btn-block mt-4" type="submit">Search Restaurants</button>
+            </form>
+        </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<section id="listings" class="py-5">
+    <div class="container">
+        <h3 class="text-center mb-4">Search Results</h3>
+        <div class="row">
+            {%for listing in listings%}
+                <!-- Listing 1 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card listing-preview">
+                        <img src={{listing.photo_main.url}} class="card-img-top" alt="restaurant" style="height:250px;"/>
+                        <div class="card-img-overlay">
+                        <h2>
+                            <span class="badge badge-danger text-white"
+                            >{{listing.promo_badge_text|title}}</span>
+                        </h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="listing-heading text-center">
+                        <h4 class="text-danger">{{listing.title|title}}</h4>
+                        <span class="badge badge-cuisine">{{listing.cuisine_choices}}</span>
+                        <p class="text-muted"><i class="fas fa-map-marker-alt"></i> {{listing.district}}</p>
+                        </div>
+                        <hr />
+                        <div class="row py-2 text-secondary">
+                            <div class="col-6"><i class="fas fa-utensils"></i> Japanese</div>
+                            <div class="col-6"><i class="fas fa-dollar-sign"></i>{{listing.price|intcomma}}/person</div>
+                        </div>
+                        <div class="row py-2 text-secondary">
+                            <div class="col-6"><i class="fas fa-calendar-alt"></i> Reservations</div>
+                            <div class="col-6"><i class="fas fa-star"></i> {{listing.accepts_reservations|title}}</div>
+                        </div> 
+                        <div class="row py-2 text-secondary">
+                            <div class="col-6"><i class="fas fa-wifi"></i> {%if listing.has_wifi%}Free Wi-Fi{%else%}No Wi-Fi{%endif%}</div>
+                            <div class="col-6"><i class="fas fa-motorcycle"></i> {% if listing.has_delivery %}Delivery{% else %}Not Delivery{% endif %}</div>
+                        </div>
+                        <div class="row py-2 text-secondary">
+                            <div class="col-6"><i class="fas fa-star"></i> {{listing.rating}}</div>
+                            <div class="col-6"><i class="fas fa-clock"></i> {% if current_time >= listing.opening_hours %}Open{% else %}Close{% endif %}</div>
+                        </div>
+                        <a href={% url "listings:listing" listing.id%} class="btn btn-danger btn-block mt-3">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            {%endfor%}
+            
+        </div>
+
+
+        {% if listings.has_other_pages %}
+        <div class="row">
+            <div class="col-md-12">
+            <ul class="pagination">
+                {% if listings.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{values}} ?page={{listings.previous_page_number}}">&laquo;</a>
+                    </li>
+                {%else%}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" disabled>&laquo;</a>
+                    </li>
+                {%endif%}
+                {% for i in listings.paginator.page_range %}
+                    {% if i == listings.number%}
+                        <li class="page-item active">
+                            <a class="page-link">{{i}}</a>
+                        </li>
+                    {%else %}
+                        <li class="page-item ">
+                            <a class="page-link" href="?page={{i}}">{{i}}</a>
+                        </li>
+                    {%endif%}
+                {% endfor %}
+                {% if listings.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{listings.next_page_number}}">&raquo;</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">&raquo;</a>
+                    </li>
+                {%endif %}
+            </ul>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+</section>
 {%endblock%}

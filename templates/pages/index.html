@@ -12,8 +12,7 @@
                 Find top-rated eateries, explore local cuisine, and save your favorites in one place.
             </p>
             <div class="search">
-                {% comment %} search.html {% endcomment %}
-                <form action="search.html">
+                <form action="{% url 'listings:search'%}">
                 <!-- Form Row 1 -->
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
