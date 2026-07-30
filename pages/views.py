@@ -2,7 +2,7 @@ from django.shortcuts import render
 from listings.models import Listing
 from django.utils import timezone
 from listings.choices import category_choices, district_choices,price_range_choices,open_now_choices
-
+from accounts.models import Staff
 # Create your views here
 def index(request):
 
@@ -26,4 +26,10 @@ def index(request):
     return render(request,"pages/index.html",context)
 
 def about(request):
-    return render(request,"pages/about.html")
+    staffs = Staff.objects.order_by('-hire_date')[:3]
+    print(staffs)
+
+    context ={
+        "staffs" : staffs
+    }
+    return render(request,"pages/about.html",context)

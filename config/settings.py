@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+from django.contrib.messages import constants as messages
 load_dotenv()
 
 
@@ -161,6 +162,11 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
+
+MESSAGE_TAGS={
+    messages.ERROR:'danger',
+    messages.SUCCESS:'success',
+}
 
 
 

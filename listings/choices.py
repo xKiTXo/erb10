@@ -39,3 +39,10 @@ open_now_choices={
     "Yes":"Yes",
     "No":"No",
 }
+
+position_choices={
+    "Editer":"Editer",
+    "Manager":"Manager",
+    "Chef Writer":"Chef Writer",
+    
+}

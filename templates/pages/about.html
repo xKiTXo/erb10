@@ -2,7 +2,7 @@
 {%load static %}
 {% block content %}
     <!-- Showcase -->
-    <section id="showcase-inner" c%%lass="py-5 text-white">
+    <section id="showcase-inner" class="py-5 text-white">
         <div class="container">
         <div class="row text-center">
             <div class="col-md-12">
@@ -63,38 +63,23 @@
         <a href={%url "listings:index"%} class="btn btn-danger text-white btn-lg">View Featured Restaurants</a>
     </section>
     <!-- team -->
-    <section id="team" class="py-5">
-        <div class="container">
-        <h2 class="text-center">Our Food Team</h2>
-        <div class="row text-center">
-            <div class="col-md-4">
-                {% comment %} kyle.jpg {% endcomment %}
-            <img src="assets/img/staffs/kyle.jpg" alt="Kyle" class="rounded-circle mb-3" />
-            <h4>Kyle Chan</h4>
-            <p class="text-danger"><i class="fas fa-utensils"></i> Food Curator</p>
-            <hr />
-            <p><i class="fas fa-phone"></i> (852)-555-5555</p>
-            <p><i class="fas fa-envelope-open"></i> kyle@foodagent.co</p>
+    {%if staffs %}
+        <section id="team" class="py-5">
+            <div class="container">
+            <h2 class="text-center">Our Food Team</h2>
+            <div class="row text-center">
+                {%for staff in staffs %}
+                    <div class="col-md-4">
+                        <img src={{staff.portrait.url}} alt="Kyle" class="rounded-circle mb-3" />
+                        <h4>{{staff.name|title}}</h4>
+                        <p class="text-danger"><i class="fas fa-utensils"></i> {{staff.position}}</p>
+                        <hr />
+                        <p><i class="fas fa-phone"></i> (852)-{{staff.phone}}</p>
+                        <p><i class="fas fa-envelope-open"></i> {{staff.email}}</p>
+                    </div>
+                {%endfor%}
             </div>
-            <div class="col-md-4">
-                {% comment %} mark.jpg {% endcomment %}
-            <img src="assets/img/staffs/mark.jpg" alt="Mark" class="rounded-circle mb-3" />
-            <h4>Mark Lee</h4>
-            <p class="text-danger">Dining Guide</p>
-            <hr />
-            <p><i class="fas fa-phone"></i> (852)-444-4444</p>
-            <p><i class="fas fa-envelope-open"></i> mark@foodagent.co</p>
             </div>
-            <div class="col-md-4">
-                {% comment %} jenny.jpg {% endcomment %}
-            <img src="assets/img/staffs/jenny.jpg" alt="Jenny" class="rounded-circle mb-3" />
-            <h4>Jenny Cheung</h4>
-            <p class="text-danger">Restaurant Reviewer</p>
-            <hr />
-            <p><i class="fas fa-phone"></i> (852)-333-3333</p>
-            <p><i class="fas fa-envelope-open"></i> jenny@foodagent.co</p>
-            </div>
-        </div>
-        </div>
-    </section>
+        </section>
+    {%endif%}
 {% endblock %}
