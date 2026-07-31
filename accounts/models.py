@@ -10,6 +10,8 @@ class Staff(models.Model):
     email= models.CharField(max_length=50)
     hire_date = models.DateTimeField(auto_now_add=True)
     position = models.CharField(max_length=100,choices=position_choices.items(),default='')
+    is_promo = models.BooleanField(default=False)
+    bio = models.TextField(blank=True)
 
     def __str__(self):
         return self.name

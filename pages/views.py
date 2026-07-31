@@ -27,9 +27,11 @@ def index(request):
 
 def about(request):
     staffs = Staff.objects.order_by('-hire_date')[:3]
-    print(staffs)
+    # print(staffs)
+    features= Staff.objects.all().filter(is_promo=True)
 
     context ={
-        "staffs" : staffs
+        "staffs" : staffs,
+        "features":features
     }
     return render(request,"pages/about.html",context)
