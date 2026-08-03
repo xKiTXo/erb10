@@ -37,7 +37,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Restaurant</th>
-                            <th scope="col">District</th>
+                            <th scope="col">Address</th>
                             <th scope="col">Status</th>
                             <th scope="col"></th>
                         </tr>
@@ -47,7 +47,7 @@
                             <tr>
                                 <td>{{contact.id}}</td>
                                 <td>{{contact.listing|title}}</td>
-                                <td>Central District</td>
+                                <td>{{contact.address|title}}</td>
                                 <td>
                                     <a class="badge badge-success" 
                                         href="{% url  'contacts:edit_contact' contact.id%}"

@@ -246,6 +246,7 @@
             {% csrf_token %}
             <div class="form-group">
             <input type="hidden" name="listing_id" value="{{listing.id}}"/>
+            <input type="hidden" name="address" value="{{listing.address}}"/>
             <input type="hidden" name="chef_email" value="{{listing.chef.email}}"/>
             {% if user.is_authenticated%}
                 <input type="hidden" name="user_id" value="{{user.id}}"/>

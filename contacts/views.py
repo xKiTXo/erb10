@@ -16,6 +16,7 @@ def contact(request):
         listing = request.POST['listing']
         phone = request.POST['phone']
         user_id = request.POST['user_id']
+        address=request.POST['address']
 
         if request.user.is_authenticated:
             user_id = request.user.id
@@ -24,7 +25,8 @@ def contact(request):
                 messages.error(request,"You have already booked this resturant")
                 return redirect('listings:listing',listing_id=listing_id)
         contact = Contact(listing=listing, listing_id=listing_id, name= name,email = email,
-                        chef_email=chef_email, message=message,phone=phone, user_id=user_id)
+                        chef_email=chef_email, message=message,phone=phone, user_id=user_id,
+                        address=address)
         contact.save()
         # send email
         # send_mail(

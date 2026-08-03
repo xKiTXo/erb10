@@ -8,6 +8,7 @@ class Contact(models.Model):
     email = models.EmailField()
     chef_email = models.EmailField(null=True)
     message = models.TextField()
+    address=models.CharField(max_length=200,null=True,blank=True)
     phone = models.CharField(max_length=20)
     contact_date = models.DateTimeField(auto_now_add=True)
     user_id = models.IntegerField(blank=True,null=True)
