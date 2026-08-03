@@ -1,6 +1,7 @@
 from django.db import models
 from chefs.models import Chef
 from .choices import category_choices,district_choices
+from taggit.managers import TaggableManager
 
 # Create your models here.
 class Menu(models.Model):
@@ -8,7 +9,6 @@ class Menu(models.Model):
 
     def __str__(self):
         return self.food
-
 
 class Listing(models.Model):
     chef = models.ForeignKey(Chef,on_delete=models.DO_NOTHING)
@@ -18,7 +18,7 @@ class Listing(models.Model):
     cuisine_choices=models.CharField(max_length=50,choices=category_choices.items(),default='')
     description=models.TextField(blank=True)
     specialty=models.ManyToManyField(Menu,blank=True)
-    room_type=models.CharField(max_length=50)
+    room_type=TaggableManager(verbose_name="Rooms",blank=True)
     has_wifi=models.BooleanField(default=True)
     has_delivery=models.BooleanField(default=True)
     rating=models.FloatField(default=0.0)
@@ -45,5 +45,8 @@ class Listing(models.Model):
 
     def __str__(self):
         return self.title
+
+    def tag_list(self):
+        return ', '.join([tag.name for tag in self.room_type.all()])
 
 
