@@ -52,7 +52,8 @@ def edit_contact(request,contact_id):
 
 
     context={
-        "form":form
+        "form":form,
+        "contact":contact,
     }
     return render(request,"contacts/edit_contact.html",context)
 

@@ -59,6 +59,7 @@ LOCAL_APPS=[
 
 THIRD_PARTY_APPS=[
     "debug_toolbar",
+    'widget_tweaks',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
