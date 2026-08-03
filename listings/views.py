@@ -65,7 +65,9 @@ def search(request):
     paginator =  Paginator(listings,3)
     page_number = request.GET.get("page")
     paged_listings =  paginator.get_page(page_number)
-
+    get_params = request.GET.copy()
+    get_params.pop("page",None)
+    clean_query=get_params.urlencode()
     context = {
         "category_choices":category_choices,
         "district_choices":district_choices,
@@ -73,6 +75,7 @@ def search(request):
         "open_now_choices":open_now_choices,
         "listings":paged_listings,
         "current_time":current_time,
-        "values":request.GET
+        "values":request.GET,
+        "clean_query":clean_query
     }
     return render(request,"pages/search.html",context)
