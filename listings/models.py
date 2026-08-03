@@ -3,6 +3,13 @@ from chefs.models import Chef
 from .choices import category_choices,district_choices
 
 # Create your models here.
+class Menu(models.Model):
+    food = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.food
+
+
 class Listing(models.Model):
     chef = models.ForeignKey(Chef,on_delete=models.DO_NOTHING)
     title=models.CharField(max_length=200)
@@ -10,12 +17,13 @@ class Listing(models.Model):
     district=models.CharField(max_length=50,choices=district_choices.items(),default='')
     cuisine_choices=models.CharField(max_length=50,choices=category_choices.items(),default='')
     description=models.TextField(blank=True)
-    specialty=models.IntegerField()
+    specialty=models.ManyToManyField(Menu,blank=True)
     room_type=models.CharField(max_length=50)
     has_wifi=models.BooleanField(default=True)
     has_delivery=models.BooleanField(default=True)
     rating=models.FloatField(default=0.0)
     opening_hours=models.TimeField()
+    closing_hours=models.TimeField(default=None,blank=True,null=True)
     price=models.IntegerField()
     promo_badge_text=models.CharField(max_length=100,blank=True,null=True)
     accepts_reservations=models.CharField(max_length=100,blank=True,null=True)

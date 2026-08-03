@@ -119,7 +119,21 @@
                         </div>
                         <div class="row py-2 text-secondary">
                             <div class="col-6"><i class="fas fa-star"></i> {{listing.rating}}</div>
-                            <div class="col-6"><i class="fas fa-clock"></i> {% if current_time >= listing.opening_hours %}Open{% else %}Close{% endif %}</div>
+                            <div class="col-6"><i class="fas fa-clock"></i> 
+                                {%if listing.opening_hours > listing.closing_hours%}
+                                    {% if current_time >= listing.opening_hours or current_time <= listing.closing_hours %}
+                                        Open
+                                    {% else %}
+                                        Closed
+                                    {% endif %}
+                                {%else%}
+                                    {% if current_time >= listing.opening_hours and current_time <= listing.closing_hours %}
+                                        Open
+                                    {%else%}
+                                        Closed
+                                    {%endif%}
+                                {%endif%}
+                            </div>
                         </div>
                         <a href={% url "listings:listing" listing.id%} class="btn btn-danger btn-block mt-3">View Details</a>
                         </div>

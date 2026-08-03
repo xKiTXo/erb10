@@ -147,10 +147,18 @@
                 <li class="list-group-item text-secondary">
                 <i class="fas fa-clock"></i> Open Status:
                 <span class="float-right">
-                    {% if current_time >= listing.opening_hours%}
-                    Open Now
-                    {% else  %}
-                    Closed
+                    {%if listing.opening_hours > listing.closing_hours%}
+                        {% if current_time >= listing.opening_hours or current_time <= listing.closing_hours %}
+                            Open
+                        {% else %}
+                            Closed
+                        {% endif %}
+                    {%else%}
+                        {% if current_time >= listing.opening_hours and current_time <= listing.closing_hours %}
+                            Open
+                        {%else%}
+                            Closed
+                        {%endif%}
                     {%endif%}
                 </span>
                 </li>
@@ -172,7 +180,7 @@
                 </li>
                 <li class="list-group-item text-secondary">
                 <i class="fas fa-calendar-alt"></i> Opening Hours:
-                <span class="float-right">{{listing.opening_hours}} - 23:00</span>
+                <span class="float-right">{{listing.opening_hours}} - {{listing.closing_hours}}</span>
                 </li>
                 <li class="list-group-item text-secondary">
                 <i class="fas fa-phone"></i> Contact:

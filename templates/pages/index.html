@@ -88,9 +88,13 @@
                         <h4 class="text-danger">
                             {{listing.title|title}}
                         </h4>
-                        <span class="badge badge-cuisine">
-                            {{listing.cuisine_choices | title}}
-                        </span>
+                        {% if listing.specialty.all %}
+                            {% for menu in listing.specialty.all%}
+                                <span class="badge badge-cuisine">
+                                    {{menu.food | title}}
+                                </span>
+                            {%endfor%}
+                        {%endif%}
                         <p class="text-muted"><i class="fas fa-map-marker-alt"></i> 
                             {{listing.district}}
                         </p>
@@ -99,7 +103,7 @@
                         <div class="row py-2 text-secondary">
                             {% comment %} come back to fix the cat {% endcomment %}
                             <div class="col-6"><i class="fas fa-utensils"></i> 
-                                Japanese
+                                {{listing.cuisine_choices | title}}
                             </div>
                             <div class="col-6"><i class="fas fa-dollar-sign"></i>
                                 {{listing.price|intcomma}}/person
@@ -126,7 +130,19 @@
                             {{listing.rating}}
                             </div>
                             <div class="col-6"><i class="fas fa-clock"></i> 
-                                {% if current_time >= listing.opening_hours %}Open{% else %}Close{% endif %}
+                                {%if listing.opening_hours > listing.closing_hours%}
+                                    {% if current_time >= listing.opening_hours or current_time <= listing.closing_hours %}
+                                        Open
+                                    {% else %}
+                                        Closed
+                                    {% endif %}
+                                {%else%}
+                                    {% if current_time >= listing.opening_hours and current_time <= listing.closing_hours %}
+                                        Open
+                                    {%else%}
+                                        Closed
+                                    {%endif%}
+                                {%endif%}
                             </div>
                         </div>
                         <a href={% url "listings:listing" listing.id%} class="btn btn-danger btn-block mt-3">View Details</a>
